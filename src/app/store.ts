@@ -1,11 +1,20 @@
-import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
+import { configureStore, ThunkAction, Action, combineReducers } from '@reduxjs/toolkit'
+import createSagaMiddleware from 'redux-saga'
+import rootSaga from './rootSaga'
+import genreReducer from 'features/genre/genreSlice'
+import movieReducer from 'features/movie/movieSlice'
 
+
+const sagaMiddleware = createSagaMiddleware()
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
+    genre: genreReducer,
+    movie:movieReducer
   },
-});
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(sagaMiddleware),
+})
+sagaMiddleware.run(rootSaga)
 
 export type AppDispatch = typeof store.dispatch;
 export type RootState = ReturnType<typeof store.getState>;

@@ -1,0 +1,7 @@
+export *from './Header'
+export * from './Body'
+export * from './Genre'
+export *from './Body'
+export *from './Header'
+export *from './Header2'
+export *from './Footer'
