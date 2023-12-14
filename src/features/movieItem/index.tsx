@@ -28,30 +28,30 @@ import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import React, { useEffect } from 'react';
 import axios from 'axios';
-import { genreActions, selectGenreList } from './genreSlice';
 import { useDispatch } from 'react-redux';
-import StatisticItem from './ListPage';
 import DeleteIcon from '@mui/icons-material/Delete';
-import ListPage from './ListPage';
 import genresApi from 'api/genresApi';
+import { movieItemActions, selectmovieItemList } from './movieItemSlice';
 
-export default function Dashboard() {
 
-  const genreList = useAppSelector(selectGenreList);
+export default function movieItemPage() {
+
+  const movieItemList = useAppSelector(selectmovieItemList);
 
   const dispatch = useAppDispatch()
   useEffect(() => {
-    dispatch(genreActions.fetchGenreList({}))
+    // genresApi.getAll().then((response) => console.log(response))
+    dispatch(movieItemActions.fetchmovieItemList({}))
   }, [])
 
   useEffect(() => {
-    console.log('genre list  ' + genreList);
-  }, [genreList])
+    console.log(movieItemList);
+  }, [movieItemList])
 
   return (
     <div>
       <Box>
-        <ListPage genresList={genreList} />
+        {/* <ListPage movieItemList={movieItemList} />   */}
       </Box>
     </div>
   );

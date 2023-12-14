@@ -8,6 +8,7 @@ const axiosClient = axios.create({
     'X-RapidAPI-Host': 'moviesminidatabase.p.rapidapi.com',
     'Content-Type':'application/json'
   },
+  
 });
 
 axiosClient.interceptors.request.use(

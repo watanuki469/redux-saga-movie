@@ -1,39 +1,42 @@
-import React, { useEffect } from 'react';
-import { styled, alpha } from '@mui/material/styles';
+import React, { useEffect, useState } from 'react';
 import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
-import SearchIcon from '@mui/icons-material/Search';
-import { Route, useParams } from 'react-router-dom';
-import MenuItem from '@mui/material/MenuItem';
-import { Mail, Notifications, Pets } from "@mui/icons-material";
-import {
-    AppBar,
-    Avatar,
-    Badge,
-    Box,
-    Button,
-    CardContent,
-    Container,
-    Grid,
-    InputBase,
-    Menu,
-    Paper,
-    Stack,
-    Toolbar,
-    Typography,
-} from "@mui/material";
+import { useNavigate, useParams } from 'react-router-dom';
+import { AppBar, Avatar, Box, Button, Toolbar, Typography, } from "@mui/material";
 import genresApi from 'api/genresApi';
+import { Movie } from 'models';
+import MoviePage from './MoviePage';
 
 export function Header2() {
     const { genre } = useParams<{ genre: string }>()
-    // console.log(genre)
+    let navigate = useNavigate();
+    const [movie, setMovie] = useState([]);
 
-    useEffect(() => {
-        // genresApi.getAll().then((response) => console.log(response))
-        // genresApi.retrievegetMoviesByGenre(`${genre}`).then((response)=> console.log(response))
-        genresApi.retrievegetMoviesByGenre(genre ?? '').then((response) => console.log(response))
+    const initialValues: Movie = {
+        imdb_id: "",
+        title: '',
+        ...movie,
+    } as Movie
 
-    }, [])
+    // useEffect(() => {
+    //     // genresApi.retrievegetMoviesByGenre(genre ?? '').then((response) => console.log(response))
+    // }, [])
+    // useEffect(() => {
+    //     (async () => {
+    //         try {
+    //             // genresApi.retrievegetMoviesByGenre(genre ?? '').then((response)=> {
+    //             //     setMovie(string)
+    //             //     // setMovie(response.data.results)
+    //             // })
+                   
+    //             const data: Movie = await genresApi.retrievegetMoviesByGenre(genre ?? '')
+    //             setMovie(data)
+
+    //         } catch (error) {
+    //             console.log('fail to fetch student details', error)
+    //         }
+    //     })();
+    // }, [genre])
+
     return (
 
         <Box sx={{ flexGrow: 1, width: '50%', ml: '25%' }}>
@@ -49,17 +52,30 @@ export function Header2() {
                         aria-label="menu"
                         sx={{ mr: 2 }}
                     >
-                        <Avatar alt="Popcorn" src="https://mood2movie.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo512.14e7e857.png&w=640&q=75" />
+                        <Avatar alt="Popcorn" src="https://mood2movie.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo512.14e7e857.png&w=640&q=75"
+                            onClick={() => navigate("/")}
+                        />
                     </IconButton>
                     <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                         {genre}
+                       {/* <MoviePage initialValues={initialValues}>{movie}</MoviePage> */}
+
                     </Typography>
 
-                    <Button size='large' sx={{ backgroundColor: 'red', color: 'white' }}>Edit Mood</Button>
+                    <Button size='large' sx={{
+                        backgroundColor: 'red', color: 'white',
+                        ':hover': {
+                            bgcolor: 'black',
+                            color: 'white',
+                        },
+                    }}
+                        onClick={() => navigate("/")}
+                    >Edit Mood</Button>
 
                 </Toolbar>
             </AppBar>
         </Box>
+
     );
 
 }

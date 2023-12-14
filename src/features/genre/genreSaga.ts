@@ -7,7 +7,7 @@ import { genreActions } from './genreSlice';
 
 function* fetchGenreList(action: PayloadAction<ListParams>) {
     try {
-        const response: ListResponse<genres> = yield call(genresApi.getAll)
+        const response: ListResponse<genres> = yield call(genresApi.getAll,action.payload)
         yield put(genreActions.fetchGenreListSuccess(response))
     }
     catch (error) {

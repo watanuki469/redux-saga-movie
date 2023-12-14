@@ -1,15 +1,26 @@
 import { createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from 'app/store';
-import { Movie, ListResponse } from 'models';
+import { Movie, ListResponse, ListParams, PaginationParams } from 'models';
 
 export interface MovieState {
     loading: boolean;
     list: Movie[];
+    filter: ListParams;
+    pagination: PaginationParams;
 }
 
 const initialState: MovieState = {
     loading: false,
     list: [],
+    filter: {
+        _page: 1,
+        _limit: 15,
+    },
+    pagination: {
+        _page: 1,
+        _limit: 15,
+        _totalRows: 20,
+    },
 };
 
 const movieSlice = createSlice({
@@ -19,13 +30,17 @@ const movieSlice = createSlice({
         fetchMovieList(state) {
             state.loading = true;
         },
-        //cập nhật vào redux từ fetch city list
+        //cập nhật vào redux từ fetch movie list
         fetchMovieListSuccess(state, action: PayloadAction<ListResponse<Movie>>) {
-            state.loading = false;
             state.list = action.payload.data;
+            state.pagination=action.payload.pagination
+            state.loading = false;
         },
         fetchMovieListFailed(state) {
             state.loading = false;
+        },
+        setFilter(state,action:PayloadAction<ListParams>){
+            state.filter=action.payload;
         },
     },
 });
@@ -35,20 +50,6 @@ export const movieActions = movieSlice.actions;
 
 // Selectors
 export const selectMovieList = (state: RootState) => state.movie.list;
-
-export const selectMovieMap = createSelector(selectMovieList, (movieList) =>
-    movieList.reduce((map: { [key: string]: Movie }, movie) => {
-        map[movie.imdb_id] = movie;
-        return map;
-    }, {})
-);
-
-export const selectCityOptions = createSelector(selectMovieList, (movieList) =>
-    movieList.map((movie) => ({
-        label: movie.imdb_id,
-        value: movie.title,
-    }))
-);
 
 // Reducer
 const movieReducer = movieSlice.reducer;

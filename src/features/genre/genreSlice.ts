@@ -2,13 +2,6 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { RootState } from "app/store";
 import { genres, ListParams, ListResponse, PaginationParams } from "models";
 
-export interface DashboardStatistics {
-    genre: string;
-}
-export interface DashBoardState {
-    statistics: DashboardStatistics
-}
-
 export interface genreState {
     loading: boolean;
     list: genres[];
@@ -21,12 +14,12 @@ const initialState: genreState = {
     list: [],
     filter: {
         _page: 1,
-        _limit: 150,
+        _limit: 15,
     },
     pagination: {
         _page: 1,
-        _limit: 150,
-        _totalRows: 150,
+        _limit: 15,
+        _totalRows: 20,
     },
 };
 
@@ -44,14 +37,18 @@ const genreSlice = createSlice({
         },
         fetchGenreListFailed(state, action: PayloadAction<string>) {
             state.loading = false
-        }
+        },
+        setFilter(state,action:PayloadAction<ListParams>){
+            state.filter=action.payload;
+        },
     }
 })
 //Actions
 export const genreActions = genreSlice.actions
 //Selectors
 export const selectGenreList = (state: RootState) => state.genre.list
-
+export const selectGenreFilter = (state: RootState) => state.genre.filter;
+export const selectGenrePagination = (state: RootState) => state.genre.pagination;
 // Reducer
 const genreReducer = genreSlice.reducer;
 export default genreReducer

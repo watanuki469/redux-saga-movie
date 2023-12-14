@@ -7,12 +7,16 @@ import { AdminLayout, MovieLayout, NotFound } from 'components/layout';
 import { useDispatch } from 'react-redux';
 import { genreActions } from 'features/genre/genreSlice';
 
+
 function App() {
- 
+
   return (
+    
     <div className="App">
+      
       <Routes>
-        {/* <Route path="/movie" element={<MovieLayout />} /> */}
+
+        
         <Route path="/" element={<AdminLayout />} />
         <Route path="/movie/byGen/:genre" element={<MovieLayout/>}/>
         <Route path='*' element={<NotFound />}/>
