@@ -1,34 +1,29 @@
-import * as React from 'react';
-import Paper from '@mui/material/Paper';
-import { Box, Button, Typography, styled, } from "@mui/material";
-import { borders } from '@mui/system';
+import { Box, Typography } from "@mui/material";
+import { useAppDispatch, useAppSelector } from "app/hooks";
+import ShowMovie from "components/common/ShowMovie";
+import MovieItemPage from "features/movieItem/movieItemPage";
+import { movieItemActions, selectmovieItemList } from "features/movieItem/movieItemSlice";
 import { Movie } from 'models';
-import { useNavigate, Navigate, useParams, } from "react-router-dom";
-import MoviePage from 'components/common/MoviePage';
+import { useEffect } from "react";
 
-export interface moviePageProps {
+export interface MoviePageProps {
   movieList: Movie[]
 }
 
-export default function moviePage({
+export default function MoviePage({
   movieList
-}: moviePageProps) {
-
-  let navigate = useNavigate();
+}: MoviePageProps) {
 
   return (
-
     <div style={{ width: '80%', marginLeft: '13%' }}>
-      <Box>
+      {/* <MovieItemPage movieItemList={movieItemList} /> */}
+
         {movieList.map(item =>
-          <div>
-            <Typography>{item.imdb_id}</Typography>
-            <Typography>{item.title}</Typography>
-          </div>
+       <Typography>
+        {item.imdb_id}
+       </Typography>
 
         )}
-
-      </Box>
     </div >
 
   );

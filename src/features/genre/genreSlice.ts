@@ -6,7 +6,7 @@ export interface genreState {
     loading: boolean;
     list: genres[];
     filter: ListParams;
-    pagination: PaginationParams;
+    // pagination: PaginationParams;
 }
 
 const initialState: genreState = {
@@ -16,11 +16,7 @@ const initialState: genreState = {
         _page: 1,
         _limit: 15,
     },
-    pagination: {
-        _page: 1,
-        _limit: 15,
-        _totalRows: 20,
-    },
+
 };
 
 const genreSlice = createSlice({
@@ -32,14 +28,14 @@ const genreSlice = createSlice({
         },
         fetchGenreListSuccess(state, action: PayloadAction<any>) {
             state.list = action.payload.results
-            state.pagination = action.payload.pagination
+            // state.pagination = action.payload
             state.loading = false
         },
         fetchGenreListFailed(state, action: PayloadAction<string>) {
             state.loading = false
         },
-        setFilter(state,action:PayloadAction<ListParams>){
-            state.filter=action.payload;
+        setFilter(state, action: PayloadAction<ListParams>) {
+            state.filter = action.payload;
         },
     }
 })
@@ -48,7 +44,7 @@ export const genreActions = genreSlice.actions
 //Selectors
 export const selectGenreList = (state: RootState) => state.genre.list
 export const selectGenreFilter = (state: RootState) => state.genre.filter;
-export const selectGenrePagination = (state: RootState) => state.genre.pagination;
+// export const selectGenrePagination = (state: RootState) => state.genre.pagination;
 // Reducer
 const genreReducer = genreSlice.reducer;
 export default genreReducer

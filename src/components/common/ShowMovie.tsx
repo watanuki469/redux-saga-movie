@@ -1,30 +1,31 @@
-import { Box } from '@mui/material';
-import { Movie } from 'models';
-import React from 'react';
-import { useState } from 'react';
-// import { useForm } from 'react-hook-form';
+import { Box, Typography } from '@mui/material';
+import { useAppDispatch, useAppSelector } from 'app/hooks';
+import MoviePage from 'features/movie/moviePage';
+import { movieActions, selectMovieList } from 'features/movie/movieSlice';
+import MovieItemPage from 'features/movieItem/movieItemPage';
+import { movieItemActions, selectmovieItemList } from 'features/movieItem/movieItemSlice';
+import { movieItem } from 'models';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
-
-export interface ShowMovieProps {
-  initialValues?: Movie;
+export interface movieItemPageProps {
+    movieItemList: movieItem[];
 }
 
-export default function ShowMovie({ initialValues }: ShowMovieProps) {
-  const [error, setError] = useState<string>('');
-//   const {
-//     control,
-//     handleSubmit,
-//     formState: { isSubmitting },
-//   } = useForm<Movie>({
-//     defaultValues: initialValues,
-//   });
+export default function ShowMovie({
+    movieItemList
+}: movieItemPageProps) {
 
-  return (
-    <Box maxWidth={400}>
-      <form>
-
-       
-      </form>
-    </Box>
-  );
+    return (
+        <div>
+            <Box>
+                {movieItemList.map(item =>
+                    <div>
+                        <img src={item.banner} />
+                        <Typography>{item.imdb_id}</Typography>
+                    </div>
+                )}
+            </Box>
+        </div>
+    );
 }

@@ -13,10 +13,6 @@ const genresApi = {
     const url = `/movie/byGen/${genres}/`
     return axiosClient.get(url);
   },
-  // retrievegetMoviesByGenre(genres: any):Promise<ListResponse<Movie>> {
-  //   const url = `/movie/byGen/${genres}/`
-  //   return axiosClient.get(url);
-  // },
 
   retrievegetMovieByImdbId(movie: any): Promise<movieItem> {
     const url = `/movie/id/${movie}`

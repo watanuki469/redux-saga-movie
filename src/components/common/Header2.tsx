@@ -2,40 +2,12 @@ import React, { useEffect, useState } from 'react';
 import IconButton from '@mui/material/IconButton';
 import { useNavigate, useParams } from 'react-router-dom';
 import { AppBar, Avatar, Box, Button, Toolbar, Typography, } from "@mui/material";
-import genresApi from 'api/genresApi';
-import { Movie } from 'models';
-import MoviePage from './MoviePage';
+import { useAppDispatch, useAppSelector } from 'app/hooks';
+import { movieActions, selectMovieList } from 'features/movie/movieSlice';
 
 export function Header2() {
     const { genre } = useParams<{ genre: string }>()
     let navigate = useNavigate();
-    const [movie, setMovie] = useState([]);
-
-    const initialValues: Movie = {
-        imdb_id: "",
-        title: '',
-        ...movie,
-    } as Movie
-
-    // useEffect(() => {
-    //     // genresApi.retrievegetMoviesByGenre(genre ?? '').then((response) => console.log(response))
-    // }, [])
-    // useEffect(() => {
-    //     (async () => {
-    //         try {
-    //             // genresApi.retrievegetMoviesByGenre(genre ?? '').then((response)=> {
-    //             //     setMovie(string)
-    //             //     // setMovie(response.data.results)
-    //             // })
-                   
-    //             const data: Movie = await genresApi.retrievegetMoviesByGenre(genre ?? '')
-    //             setMovie(data)
-
-    //         } catch (error) {
-    //             console.log('fail to fetch student details', error)
-    //         }
-    //     })();
-    // }, [genre])
 
     return (
 
@@ -58,8 +30,6 @@ export function Header2() {
                     </IconButton>
                     <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                         {genre}
-                       {/* <MoviePage initialValues={initialValues}>{movie}</MoviePage> */}
-
                     </Typography>
 
                     <Button size='large' sx={{

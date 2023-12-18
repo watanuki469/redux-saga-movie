@@ -1,19 +1,16 @@
 import { Box, Button, Typography, styled, } from "@mui/material";
-import { borders } from '@mui/system';
-import genresApi from "api/genresApi";
-import { Movie, genres } from 'models';
-import { useEffect, useState } from "react";
-import { useNavigate, Navigate, useParams, } from "react-router-dom";
+import { genres } from 'models';
+import { useNavigate} from "react-router-dom";
 
 
-export interface ListPageProps {
+export interface GenrePageProps {
   genresList: genres[];
 }
 
-export default function ListPage({
+export default function GenrePage({
   genresList
 
-}: ListPageProps) {
+}: GenrePageProps) {
 
   let navigate = useNavigate();
 
@@ -28,7 +25,7 @@ export default function ListPage({
           gridTemplateColumns: 'repeat(4, 1fr)',
         }} >
         {genresList.map(item =>
-          <Button variant="contained" size="large"
+          <Button variant="contained" size="large" onClick={() => navigate(`/movie/byGen/${item.genre}`)}
             sx={{
               fontWeight: '600', textTransform: 'uppercase', textAlign: 'center'
               , minHeight: '1rem', width: '15rem', ':hover': {
@@ -41,9 +38,10 @@ export default function ListPage({
               paddingLeft: '1rem', paddingRight: '1rem',
               borderRadius: '1rem',
               '--Grid-borderWidth': '1px', borderColor: 'pink',
+
             }}>
 
-            <Typography onClick={() => navigate(`/movie/byGen/${item.genre}`)}>
+            <Typography>
               {item.genre}
             </Typography>
           </Button>

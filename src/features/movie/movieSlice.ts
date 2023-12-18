@@ -6,7 +6,7 @@ export interface MovieState {
     loading: boolean;
     list: Movie[];
     filter: ListParams;
-    pagination: PaginationParams;
+    // pagination: PaginationParams;
 }
 
 const initialState: MovieState = {
@@ -16,31 +16,26 @@ const initialState: MovieState = {
         _page: 1,
         _limit: 15,
     },
-    pagination: {
-        _page: 1,
-        _limit: 15,
-        _totalRows: 20,
-    },
-};
+}
 
 const movieSlice = createSlice({
-    name: 'movie',
+    name: 'Movie',
     initialState,
     reducers: {
-        fetchMovieList(state) {
+        fetchMovieList(state, action: PayloadAction<any>) {
             state.loading = true;
         },
         //cập nhật vào redux từ fetch movie list
-        fetchMovieListSuccess(state, action: PayloadAction<ListResponse<Movie>>) {
-            state.list = action.payload.data;
-            state.pagination=action.payload.pagination
+        fetchMovieListSuccess(state, action: PayloadAction<any>) {
+            // console.log(action);
+            state.list = action.payload.results
             state.loading = false;
         },
         fetchMovieListFailed(state) {
             state.loading = false;
         },
-        setFilter(state,action:PayloadAction<ListParams>){
-            state.filter=action.payload;
+        setFilter(state, action: PayloadAction<ListParams>) {
+            state.filter = action.payload;
         },
     },
 });
