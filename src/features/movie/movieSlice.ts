@@ -45,6 +45,8 @@ export const movieActions = movieSlice.actions;
 
 // Selectors
 export const selectMovieList = (state: RootState) => state.movie.list;
+export const selectMovieFilter = (state: RootState) => state.movie.filter;
+
 
 // Reducer
 const movieReducer = movieSlice.reducer;

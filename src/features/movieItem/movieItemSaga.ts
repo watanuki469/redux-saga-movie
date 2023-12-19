@@ -1,12 +1,12 @@
 import { PayloadAction } from '@reduxjs/toolkit';
 import genresApi from 'api/genresApi';
 import { ListParams, ListResponse, movieItem } from 'models';
-import { call, put, takeLatest } from 'redux-saga/effects';
+import { call, put, takeEvery, takeLatest } from 'redux-saga/effects';
 import { movieItemActions } from './movieItemSlice';
 
 function* fetchMovieItemList(action: PayloadAction<ListParams>) {
     try {
-        const response: ListResponse<movieItem> = yield call(genresApi.retrievegetMovieByImdbId,action.payload)
+        const response: ListResponse<movieItem> = yield call(genresApi.retrievegetMovieByImdbId, action.payload)
         yield put(movieItemActions.fetchmovieItemListSuccess(response))
     }
     catch (error) {
@@ -17,5 +17,5 @@ function* fetchMovieItemList(action: PayloadAction<ListParams>) {
 
 
 export default function* movieItemSaga() {
-    yield takeLatest(movieItemActions.fetchmovieItemList.type,fetchMovieItemList)
+    yield takeEvery(movieItemActions.fetchmovieItemList.type, fetchMovieItemList)
 }

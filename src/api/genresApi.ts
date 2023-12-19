@@ -10,7 +10,7 @@ const genresApi = {
   },
 
   retrievegetMoviesByGenre(genres: any): Promise<Movie> {
-    const url = `/movie/byGen/${genres}/`
+    const url = `/movie/byGen/${genres}`
     return axiosClient.get(url);
   },
 

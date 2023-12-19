@@ -6,10 +6,9 @@ import { Route, useParams } from 'react-router-dom';
 import { useDebounce } from "hook/useDebounce";
 import { genreActions, selectGenreFilter } from "features/genre/genreSlice";
 import { useAppDispatch, useAppSelector } from "app/hooks";
-import MoviePage from "features/movie/moviePage";
-import MovieDashboard from "features/movie";
 import MoviePageDashBoard from "components/common/MoviePageDashBoard";
-import ShowMovie from "components/common/ShowMovie";
+import MovieItemPage from "features/movieItem/movieItemPage";
+import MoviePage from "features/movie/moviePage";
 
 
 export function MovieLayout() {
@@ -27,8 +26,6 @@ export function MovieLayout() {
 
   useEffect(() => {
     console.log(filter);
-    console.log();
-
   }, []
   )
 
@@ -46,7 +43,8 @@ export function MovieLayout() {
     <div>
       <Header2 />
       <MoviePageDashBoard/>
-      {/* <MoviePage/> */}
+
+      
       <div className={`${loading ? "block" : "hidden"} `}>
         <CircularProgress disableShrink />
       </div>
