@@ -32,24 +32,6 @@ const Item = styled(Paper)(({ theme }) => ({
 export function Header() {
     let navigate = useNavigate();
     return (
-        // <Stack
-        //     direction={{ xs: "column", md: "row" }}
-        //     justifyContent="space-between"
-        //     alignItems="center"
-        //     spacing={1}
-        //     sx={{ pb: 6 }}
-        // >
-        //     <Typography variant="body2" color="text.secondary">
-        //         <Avatar alt="Popcorn" src="https://mood2movie.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo512.14e7e857.png&w=640&q=75" />
-        //     </Typography>
-
-        //     <Typography variant="body2" color="white">
-        //         Mood2Movie
-        //     </Typography>
-
-        //     <Typography variant="body2" color="text.secondary">
-        //     </Typography>
-        // </Stack>
         
         <Box sx={{ flexGrow: 1, width: '50%', ml: '25%' }}>
             <AppBar position="static" sx={{
@@ -72,8 +54,6 @@ export function Header() {
                         Mood2Movie
                     </Typography>
 
-
-                   
                     <Button size='large' sx={{
                          backgroundColor: "gray", borderRadius: '10px',
                          opacity: '-moz-initial'

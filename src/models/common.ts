@@ -1,7 +1,6 @@
 export interface PaginationParams {
-    _limit: number;
-    _page: number;
-    _totalRows: number;
+    _: number;
+    index: number;
   }
   
   export interface ListResponse<T> {
@@ -10,10 +9,12 @@ export interface PaginationParams {
   }
   
   export interface ListParams {
-    _page?: number;
-    _limit?: number;
-    _sort?: string;
-    _order?: 'asc' | 'desc';
-    gender?:any
+    _: number;
+    index: number;
     [key: string]: any;
   }
+
+  export interface CountParam {
+    index: number;
+  }
+  

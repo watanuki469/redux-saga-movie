@@ -14,4 +14,8 @@ export interface movieItem {
     plot: any
     banner: any
     type: any
+    gen:[
+        id:any,
+        genre:any
+    ]
 }

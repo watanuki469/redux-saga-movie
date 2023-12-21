@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { RootState } from "app/store";
-import { ListParams, ListResponse, movieItem, PaginationParams } from "models";
+import { ListParams, ListResponse, Movie, movieItem, PaginationParams } from "models";
 
 
 export interface movieItemState {
@@ -14,13 +14,12 @@ const initialState: movieItemState = {
     loading: false,
     list: [],
     filter: {
-        _page: 1,
-        _limit: 15,
+        _: 1,
+        index: 15,
     },
     pagination: {
-        _page: 1,
-        _limit: 15,
-        _totalRows: 20,
+        _: 1,
+        index: 15,
     },
 };
 
@@ -43,6 +42,7 @@ const movieItemSlice = createSlice({
         setFilter(state, action: PayloadAction<ListParams>) {
             state.filter = action.payload;
         },
+        
     }
 })
 //Actions

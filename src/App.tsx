@@ -1,26 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import genresApi from 'api/genresApi';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { AdminLayout, MovieLayout, NotFound } from 'components/layout';
-import { useDispatch } from 'react-redux';
-import { genreActions } from 'features/genre/genreSlice';
+import { Route, Routes } from 'react-router-dom';
+import { AdminLayout, MovieLayout, NotFound, SingleMovie } from 'components/layout';
 
 
 function App() {
-
   return (
-    
     <div className="App">
-      
-      <Routes>
-
-        
+      <Routes>        
         <Route path="/" element={<AdminLayout />} />
         <Route path="/movie/byGen/:genre" element={<MovieLayout/>}/>
+        <Route path="/movie/id/:imdb_id" element={<SingleMovie/>}/>
         <Route path='*' element={<NotFound />}/>
-
       </Routes>
     </div>
   );

@@ -1,8 +1,8 @@
-import {Box} from "@mui/material";
+import { Box } from "@mui/material";
 import { useAppDispatch, useAppSelector } from 'app/hooks';
 import React, { useEffect } from 'react';
-import { genreActions, selectGenreList } from './genreSlice';
-import GenrePage from './GenrePage';
+import { genreActions, selectGenreList } from "features/genre/genreSlice";
+import GenrePage from "components/pages/GenrePage";
 
 export default function Dashboard() {
 
@@ -10,7 +10,7 @@ export default function Dashboard() {
 
   const dispatch = useAppDispatch()
   useEffect(() => {
-   dispatch(genreActions.fetchGenreList({}))
+    dispatch(genreActions.fetchGenreList({}))
   }, [])
 
   useEffect(() => {

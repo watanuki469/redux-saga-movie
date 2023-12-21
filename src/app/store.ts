@@ -4,6 +4,7 @@ import rootSaga from './rootSaga'
 import genreReducer from 'features/genre/genreSlice'
 import movieReducer from 'features/movie/movieSlice'
 import movieItemReducer from 'features/movieItem/movieItemSlice'
+import singleMovieReducer from 'features/singleMovie/singleMovieSlice'
 
 
 const sagaMiddleware = createSagaMiddleware()
@@ -11,7 +12,8 @@ export const store = configureStore({
   reducer: {
     genre: genreReducer,
     movie:movieReducer,
-    movieItem:movieItemReducer
+    movieItem:movieItemReducer,
+    singleMovie:singleMovieReducer
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(sagaMiddleware),

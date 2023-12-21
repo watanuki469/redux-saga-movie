@@ -1,6 +1,6 @@
 import { Typography } from "@mui/material";
 import CardContent from '@mui/material/CardContent';
-import Dashboard from 'features/genre';
+import Dashboard from "./GenrePageDashBoard";
 
 export function Body() {
 

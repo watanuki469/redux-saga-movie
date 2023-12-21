@@ -1,9 +1,6 @@
-import React, { useEffect, useState } from 'react';
 import IconButton from '@mui/material/IconButton';
 import { useNavigate, useParams } from 'react-router-dom';
 import { AppBar, Avatar, Box, Button, Toolbar, Typography, } from "@mui/material";
-import { useAppDispatch, useAppSelector } from 'app/hooks';
-import { movieActions, selectMovieList } from 'features/movie/movieSlice';
 
 export function Header2() {
     const { genre } = useParams<{ genre: string }>()

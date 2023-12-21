@@ -1,21 +1,26 @@
 import { createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from 'app/store';
-import { Movie, ListResponse, ListParams, PaginationParams } from 'models';
+import { Movie, ListResponse, ListParams, PaginationParams, CountParam } from 'models';
 
 export interface MovieState {
     loading: boolean;
     list: Movie[];
     filter: ListParams;
-    // pagination: PaginationParams;
+    pagination: PaginationParams;
 }
 
 const initialState: MovieState = {
     loading: false,
     list: [],
     filter: {
-        _page: 1,
-        _limit: 15,
+        _: 1,
+        index: 15,
     },
+    pagination: {
+        _: 1,
+        index: 15
+    },
+  
 }
 
 const movieSlice = createSlice({
@@ -27,8 +32,9 @@ const movieSlice = createSlice({
         },
         //cập nhật vào redux từ fetch movie list
         fetchMovieListSuccess(state, action: PayloadAction<any>) {
-            // console.log(action);
-            state.list = action.payload.results
+            state.list = action.payload.results.filter((_:any,index:any)=>{
+                return index<=23
+            })
             state.loading = false;
         },
         fetchMovieListFailed(state) {
@@ -36,6 +42,10 @@ const movieSlice = createSlice({
         },
         setFilter(state, action: PayloadAction<ListParams>) {
             state.filter = action.payload;
+        },
+        setCount(state, action: PayloadAction<any>) {
+            state.list = action.payload.count
+            state.loading = false;
         },
     },
 });
@@ -46,7 +56,7 @@ export const movieActions = movieSlice.actions;
 // Selectors
 export const selectMovieList = (state: RootState) => state.movie.list;
 export const selectMovieFilter = (state: RootState) => state.movie.filter;
-
+export const selectmoviePagination = (state: RootState) => state.movie.pagination;
 
 // Reducer
 const movieReducer = movieSlice.reducer;
