@@ -7,7 +7,7 @@ import { useDebounce } from "hook/useDebounce";
 import { useAppDispatch, useAppSelector } from "app/hooks";
 import MoviePageDashBoard from "components/common/MoviePageDashBoard";
 import MovieItemPage from "components/pages/movieItemPage";
-import MoviePage from "components/pages/moviePage";
+import MoviePage from "components/pages/moviePageDashBoard";
 
 
 export function MovieLayout() {
@@ -16,8 +16,11 @@ export function MovieLayout() {
 
   return (
     <div>
-      <Header2 />
-      <MoviePageDashBoard />
+       <Box sx={{ bgcolor: "black", position: "relative" }}>
+        <Header2 />
+        <MoviePageDashBoard />
+      </Box>
+
 
       <div className={`${loading ? "block" : "hidden"} `}>
         <CircularProgress disableShrink />

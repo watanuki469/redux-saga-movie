@@ -33,7 +33,6 @@ const movieItemSlice = createSlice({
         //cập nhật vào redux từ fetch movie item list
         fetchmovieItemListSuccess(state, action: PayloadAction<any>) {
             state.list = [...state.list, action.payload.results]
-            // state.pagination = action.payload.pagination
             state.loading = false
         },
         fetchmovieItemListFailed(state, action: PayloadAction<string>) {
@@ -49,6 +48,7 @@ const movieItemSlice = createSlice({
 export const movieItemActions = movieItemSlice.actions
 //Selectors
 export const selectmovieItemList = (state: RootState) => state.movieItem.list
+export const selectmovieItemListSlicer = (state: RootState) => state.movieItem.list.slice
 export const selectmovieItemFilter = (state: RootState) => state.movieItem.filter;
 export const selectmovieItemPagination = (state: RootState) => state.movieItem.pagination;
 // Reducer

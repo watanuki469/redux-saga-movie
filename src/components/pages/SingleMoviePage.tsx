@@ -4,6 +4,7 @@ import { Movie, movieItem } from 'models';
 import { useNavigate } from "react-router-dom";
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import { ArrowForwardIos } from "@mui/icons-material";
+import { useEffect } from "react";
 
 export interface SingleMoviePageProps {
     singleList: movieItem[];
@@ -12,14 +13,12 @@ export interface SingleMoviePageProps {
 export default function SingleMoviePage({
     singleList,
 
-
 }: SingleMoviePageProps) {
     const bull = (
         <Box
             component="span"
             sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
         >
-            •
         </Box>
     );
 
@@ -91,6 +90,7 @@ export default function SingleMoviePage({
                                         rowGap: 2,
                                         gridTemplateColumns: 'repeat(5, 1fr)',
                                     }} >
+
                                     {item.gen.map(item =>
                                         <Button variant="contained"
                                             onClick={() => navigate(`/movie/byGen/${item.genre}`)}
