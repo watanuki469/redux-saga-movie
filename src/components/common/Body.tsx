@@ -1,6 +1,6 @@
 import { Typography } from "@mui/material";
 import CardContent from '@mui/material/CardContent';
-import Dashboard from "./GenrePageDashBoard";
+import Dashboard from "../dashboard/GenrePageDashBoard";
 
 export function Body() {
 
@@ -12,8 +12,8 @@ export function Body() {
             <Typography variant="h4" color="white" component="div">
                 How are you feeling now?
             </Typography>
-            <Dashboard/>
+            <Dashboard />
         </CardContent>
-         
+
     );
 }

@@ -1,10 +1,6 @@
-import { Box, Button, CircularProgress, Pagination, Typography } from "@mui/material";
-import { useAppDispatch, useAppSelector } from "app/hooks";
-import { Footer, Header2, SinglePage } from "components/common";
-import MovieItemPage from "components/pages/movieItemPage";
-import { movieItemActions, selectmovieItemList } from "features/movieItem/movieItemSlice";
-import { Movie, movieItem } from 'models';
-import { useEffect, useState } from "react";
+import { Box, CircularProgress } from "@mui/material";
+import { Footer, SinglePage } from "components/common";
+import { useState } from "react";
 
 export function SingleMovie() {
 

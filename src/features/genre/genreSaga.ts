@@ -1,7 +1,7 @@
 import { PayloadAction } from '@reduxjs/toolkit';
 import genresApi from 'api/genresApi';
 import { ListParams, ListResponse, genres } from 'models';
-import { call, debounce, put, takeLatest } from 'redux-saga/effects';
+import { call, put, takeLatest } from 'redux-saga/effects';
 import { genreActions } from './genreSlice';
 
 

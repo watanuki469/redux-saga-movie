@@ -1,6 +1,6 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit"
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "app/store";
-import { genres, ListParams, ListResponse, PaginationParams } from "models";
+import { genres } from "models";
 
 export interface genreState {
     loading: boolean;

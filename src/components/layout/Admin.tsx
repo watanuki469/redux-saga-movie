@@ -1,11 +1,11 @@
-import {Box,} from "@mui/material";
-import { Header, Body, Header2, Footer } from 'components/common';
+import { Box, } from "@mui/material";
+import { Body, Footer, Header } from 'components/common';
 
 export function AdminLayout() {
     // const classes = useStyles();
 
     return (
-        <Box sx={{ bgcolor: "black", position: "relative" }}>
+        <Box  sx={{ bgcolor: "black" }}>
             <Header />
             <Body />
             <Footer/>

@@ -7,7 +7,6 @@ export function Header2() {
     let navigate = useNavigate();
 
     return (
-
         <Box sx={{ flexGrow: 1, width: '50%', ml: '25%' }}>
             <AppBar position="static" sx={{
                 backgroundColor: "gray", borderRadius: '10px',

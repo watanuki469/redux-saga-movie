@@ -1,6 +1,6 @@
-import { createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from 'app/store';
-import { Movie, ListResponse, ListParams, PaginationParams, CountParam } from 'models';
+import { ListParams, Movie, PaginationParams } from 'models';
 
 export interface MovieState {
     loading: boolean;
@@ -33,7 +33,7 @@ const movieSlice = createSlice({
         //cập nhật vào redux từ fetch movie list
         fetchMovieListSuccess(state, action: PayloadAction<any>) {
             state.list = action.payload.results.filter((_:any,index:any)=>{
-                return index<=23
+                return index<=17
             })
             state.loading = false;
         },

@@ -1,11 +1,10 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit"
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "app/store";
-import { ListParams, ListResponse, Movie, movieItem, PaginationParams } from "models";
-
+import { movieItem, singleMovie } from "models";
 
 export interface movieItemState {
     loading: boolean;
-    list: movieItem[];
+    list: singleMovie[];
 }
 
 const initialState: movieItemState = {
@@ -22,8 +21,8 @@ const singleMovieSlice = createSlice({
         },
         //cập nhật vào redux từ fetch movie item list
         fetchSingleMovieListSuccess(state, action: PayloadAction<any>) {
-            state.list = [...state.list, action.payload.results]
-            // state.pagination = action.payload.pagination
+            // state.list = [...state.list, action.payload.results]
+            state.list = [action.payload.results]
             state.loading = false
         },
         fetchSingleMovieListFailed(state, action: PayloadAction<string>) {

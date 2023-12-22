@@ -1,7 +1,7 @@
 import { PayloadAction } from '@reduxjs/toolkit';
 import genresApi from 'api/genresApi';
 import { ListParams, ListResponse, movieItem } from 'models';
-import { call, put, takeEvery, takeLatest } from 'redux-saga/effects';
+import { call, put, takeEvery } from 'redux-saga/effects';
 import { movieItemActions } from './movieItemSlice';
 
 function* fetchMovieItemList(action: PayloadAction<ListParams>) {

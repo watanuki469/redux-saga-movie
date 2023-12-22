@@ -1,26 +1,15 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit"
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "app/store";
-import { ListParams, ListResponse, Movie, movieItem, PaginationParams } from "models";
-
+import { movieItem } from "models";
 
 export interface movieItemState {
     loading: boolean;
     list: movieItem[];
-    filter: ListParams;
-    pagination: PaginationParams;
 }
 
 const initialState: movieItemState = {
     loading: false,
     list: [],
-    filter: {
-        _: 1,
-        index: 15,
-    },
-    pagination: {
-        _: 1,
-        index: 15,
-    },
 };
 
 const movieItemSlice = createSlice({
@@ -37,11 +26,7 @@ const movieItemSlice = createSlice({
         },
         fetchmovieItemListFailed(state, action: PayloadAction<string>) {
             state.loading = false
-        },
-        setFilter(state, action: PayloadAction<ListParams>) {
-            state.filter = action.payload;
-        },
-        
+        },   
     }
 })
 //Actions
@@ -49,8 +34,7 @@ export const movieItemActions = movieItemSlice.actions
 //Selectors
 export const selectmovieItemList = (state: RootState) => state.movieItem.list
 export const selectmovieItemListSlicer = (state: RootState) => state.movieItem.list.slice
-export const selectmovieItemFilter = (state: RootState) => state.movieItem.filter;
-export const selectmovieItemPagination = (state: RootState) => state.movieItem.pagination;
+
 // Reducer
 const movieItemReducer = movieItemSlice.reducer;
 export default movieItemReducer

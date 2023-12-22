@@ -1,13 +1,11 @@
-import { AppBar, Avatar, Box, Button, Card, CardActions, CardContent, CardHeader, CardMedia, Grid, IconButton, Stack, Toolbar, Typography, styled, } from "@mui/material";
-import { red, yellow } from "@mui/material/colors";
-import { Movie, movieItem } from 'models';
-import { useNavigate } from "react-router-dom";
 import StarBorderIcon from '@mui/icons-material/StarBorder';
-import { ArrowForwardIos } from "@mui/icons-material";
-import { useEffect } from "react";
+import { AppBar, Avatar, Box, Button, Card, CardContent, Grid, IconButton, Toolbar, Typography } from "@mui/material";
+import { yellow } from "@mui/material/colors";
+import { movieItem } from 'models';
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 
 export interface SingleMoviePageProps {
-    singleList: movieItem[];
+    singleList: movieItem[]
 }
 
 export default function SingleMoviePage({
@@ -25,6 +23,7 @@ export default function SingleMoviePage({
     let navigate = useNavigate();
     return (
         <div style={{ width: '50%', margin: "auto" }}>
+            <Navigate to="#" />
             {singleList.map(item =>
                 <Box sx={{ flexGrow: 1, }}>
                     <AppBar position="static" sx={{
@@ -91,7 +90,7 @@ export default function SingleMoviePage({
                                         gridTemplateColumns: 'repeat(5, 1fr)',
                                     }} >
 
-                                    {item.gen.map(item =>
+                                    {item.gen.map((item: any) =>
                                         <Button variant="contained"
                                             onClick={() => navigate(`/movie/byGen/${item.genre}`)}
                                             sx={{
@@ -107,7 +106,7 @@ export default function SingleMoviePage({
                                                 color: 'red',
                                                 borderRadius: '1rem',
                                                 '--Grid-borderWidth': '1px',
-                                                 borderColor: 'pink',
+                                                borderColor: 'pink',
 
                                             }}>
                                             {item.genre}

@@ -1,6 +1,6 @@
-import { Box, Button, Typography, styled, } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import { genres } from 'models';
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 export interface GenrePageProps {

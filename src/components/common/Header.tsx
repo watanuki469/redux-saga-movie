@@ -1,34 +1,8 @@
-import * as React from 'react';
-import { styled, alpha } from '@mui/material/styles';
+import {  AppBar,  Avatar,  Box,  Button, Paper,Toolbar, Typography} from "@mui/material";
 import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
-import SearchIcon from '@mui/icons-material/Search';
-import { Route, useNavigate } from 'react-router-dom';
-import MenuItem from '@mui/material/MenuItem';
-import { Mail, Notifications, Pets } from "@mui/icons-material";
-import {
-    AppBar,
-    Avatar,
-    Badge,
-    Box,
-    Button,
-    CardContent,
-    Container,
-    Grid,
-    InputBase,
-    Menu,
-    Paper,
-    Stack,
-    Toolbar,
-    Typography,
-} from "@mui/material";
-const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-}));
+import { styled } from '@mui/material/styles';
+import { useNavigate } from 'react-router-dom';
+
 export function Header() {
     let navigate = useNavigate();
     return (

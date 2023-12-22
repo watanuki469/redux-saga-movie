@@ -1,10 +1,10 @@
-import { Box, Button, Pagination, Typography } from "@mui/material";
 import { useAppDispatch, useAppSelector } from "app/hooks";
+import SingleMoviePage from "components/pages/SingleMoviePage";
 import MovieItemPage from "components/pages/movieItemPage";
 import { movieItemActions, selectmovieItemList } from "features/movieItem/movieItemSlice";
-import { Movie } from 'models';
-import { useEffect, useState } from "react";
-import { selectMovieFilter, selectmoviePagination } from "../../features/movie/movieSlice";
+import { Movie, movieItem } from 'models';
+import { useEffect } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 
 export interface MoviePageProps {
   movieList: Movie[]
@@ -16,7 +16,11 @@ export default function MoviePage({
   const dispatch = useAppDispatch()
   const movieItemList = useAppSelector(selectmovieItemList)
 
-
+  let navigate = useNavigate();
+  const handleChangePage = async (movie: movieItem) => {
+    navigate(`/movie/id/${movie.imdb_id}`)
+   
+  }
   useEffect(() => {
     if (movieList) {
       movieList.map(item => {
@@ -27,7 +31,7 @@ export default function MoviePage({
 
   return (
     <div style={{ width: '80%', marginLeft: '13%' }}>
-      <MovieItemPage movieItemList={movieItemList} />
+      <MovieItemPage movieItemList={movieItemList} onEdit={handleChangePage} />
     </div >
 
 

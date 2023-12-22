@@ -1,8 +1,8 @@
-import { Box, Pagination, Typography } from '@mui/material';
+import { Box } from '@mui/material';
 import { useAppDispatch, useAppSelector } from 'app/hooks';
-import MoviePage from 'components/pages/moviePageDashBoard';
+import MoviePage from 'components/dashboard/MovieItemPageDashBoard';
 import { movieActions, selectMovieList } from 'features/movie/movieSlice';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 export default function MoviePageDashBoard() {
