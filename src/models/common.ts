@@ -11,6 +11,7 @@ export interface PaginationParams {
   export interface ListParams {
     _: number;
     index: number;
+    _order?: 'asc' | 'desc';
     [key: string]: any;
   }
 

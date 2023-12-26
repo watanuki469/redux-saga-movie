@@ -1,16 +1,15 @@
 import { useAppDispatch, useAppSelector } from "app/hooks";
-import SingleMoviePage from "components/pages/SingleMoviePage";
 import MovieItemPage from "components/pages/movieItemPage";
 import { movieItemActions, selectmovieItemList } from "features/movieItem/movieItemSlice";
 import { Movie, movieItem } from 'models';
 import { useEffect } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export interface MoviePageProps {
   movieList: Movie[]
 }
 
-export default function MoviePage({
+export default function ({
   movieList
 }: MoviePageProps) {
   const dispatch = useAppDispatch()

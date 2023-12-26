@@ -6,11 +6,11 @@ import { singleMovieActions } from './singleMovieSlice';
 
 function* fetchSingleMovieList(action: PayloadAction<ListParams>) {
     try {
-        const response: ListResponse<singleMovie> = yield call(genresApi.retrievegetMovieByImdbId2, action.payload)
+        const response: ListResponse<singleMovie> = yield call(genresApi.retrievegetMovieByImdbId, action.payload)
         yield put(singleMovieActions.fetchSingleMovieListSuccess(response))
     }
     catch (error) {
-        console.log('fail to fetch single movie item list', error)
+        console.log('fail to fetch single movie list', error)
         yield put(singleMovieActions.fetchSingleMovieListFailed)
     }
 }

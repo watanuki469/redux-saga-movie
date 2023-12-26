@@ -16,10 +16,6 @@ export function SinglePage() {
   useEffect(() => {
     dispatch(movieItemActions.fetchmovieItemList(imdb_id))
     dispatch(singleMovieActions.fetchSingleMovieList(imdb_id))
-    console.log(
-      '1 la movie Item '+singleList,
-      '2 la sing Item ' +singleList2
-    )
     
   }, [imdb_id])
 

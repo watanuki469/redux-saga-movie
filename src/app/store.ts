@@ -5,15 +5,17 @@ import genreReducer from 'features/genre/genreSlice'
 import movieReducer from 'features/movie/movieSlice'
 import movieItemReducer from 'features/movieItem/movieItemSlice'
 import singleMovieReducer from 'features/singleMovie/singleMovieSlice'
+import popularityReducer from 'features/popularity/popularitySlice'
 
 
 const sagaMiddleware = createSagaMiddleware()
 export const store = configureStore({
   reducer: {
     genre: genreReducer,
-    movie:movieReducer,
-    movieItem:movieItemReducer,
-    singleMovie:singleMovieReducer
+    movie: movieReducer,
+    movieItem: movieItemReducer,
+    singleMovie: singleMovieReducer,
+    popularity:popularityReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(sagaMiddleware),
